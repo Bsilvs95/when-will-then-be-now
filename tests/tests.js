@@ -1,5 +1,5 @@
 const { expect } = require('chai')
-const { describe, it } = require('mocha')
+
 const allLogs = require('./logs.js')
 const filterLogs = require('../logFilter')
 

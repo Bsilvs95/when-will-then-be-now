@@ -13,11 +13,13 @@ function filterLogsByEnv(logs, env) {
 function filterLogsOnDate(logs, dateFilter) {
   const filteredLogs = []
   const parsedDateFilter = new Date(dateFilter)
-
+  console.log(dateFilter)
   logs.forEach((log) => {
     const timestampDate = new Date(log.timestamp)
 
-    if (parsedDateFilter.toDateString() === timestampDate.toDateString()) {
+    if (parsedDateFilter.getUTCMonth() === timestampDate.getUTCMonth()
+      && parsedDateFilter.getUTCDate() === timestampDate.getUTCDate()
+      && parsedDateFilter.getUTCFullYear() === timestampDate.getUTCFullYear()) {
       filteredLogs.push(log)
     }
   })
@@ -33,6 +35,7 @@ function filterLogs(logs, env, dateFilter) {
   } else {
     return envLogs
   }
+
 }
 
 module.exports = filterLogs
